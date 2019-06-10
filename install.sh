@@ -45,7 +45,7 @@ printf "Add to Startup (y/n) "
 read -r CONT
 if [ "$CONT" = "y" ]; then
   echo "Adding to startup"
-   echo "~/rpitx_GUI_TX/startgui.sh >/dev/null 2>/dev/null &" >> .bashrc
+   echo "~/rpitx_GUI_TX/startgui.sh >/dev/null 2>/dev/null &" >> ~/.bashrc
    echo "Added to Startup!"
 else
   echo "Info : Automatic GUI startup disabled";
