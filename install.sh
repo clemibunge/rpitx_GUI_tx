@@ -27,8 +27,6 @@ make
 sudo make install
 cd .. || exit
 printf "\n\n"
-printf "In order to run properly, rpitx need to modify /boot/config.txt. Are you sure (y/n) "
-read -r CONT
 echo "Set GPU to 250Mhz in order to be stable"
 LINE='gpu_freq=250'
 FILE='/boot/config.txt'
