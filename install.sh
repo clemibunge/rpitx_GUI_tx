@@ -9,9 +9,7 @@ cd rpitx
 echo Install rpitx - some package need internet connection -
 sudo apt-get install -y libsndfile1-dev git
 sudo apt-get install -y imagemagick libfftw3-dev
-#For rtl-sdr use
 sudo apt-get install -y rtl-sdr buffer
-# We use CSDR as a dsp for analogs modes thanks to HA7ILM
 git clone https://github.com/simonyiszk/csdr
 patch -i csdrpizero.diff csdr/Makefile
 cd csdr || exit
@@ -40,6 +38,7 @@ cd ~
 echo Finished installing RPITX
 #Install Dependencies
 sudo apt-get install python python3 python-tk idle python-pmw python-imaging --yes
+#start GUI
 cd ~
 cd rpitx_GUI_tx
 python3 gui.py
