@@ -34,34 +34,35 @@ def stopTX():
     TXING = 0;
     os.system('sudo killall rpitx 2>/dev/null');
     os.system('sudo killall tune 2>/dev/null');
+    os.system('sudo killall arecord 2>/dev/null');
 def fmTX():
     global TXING;
     global soundcard;
     print("FM");
     if TXING != 1:
       TXING = 1;
-      os.system('arecord -c1 -r48000 -D ' + soundcard + ' -c1 -r48000 -D default -fS16_LE - -fS16_LE - | csdr convert_i16_f | csdr gain_ff 7000 | csdr convert_f_samplerf 20833 | sudo rpitx -i- -m RF -f ' + E1.get() + 'e3  >/dev/null 2>/dev/null &');
+      os.system('arecord -c1 -r48000 -D ' + soundcard + ' -c1 -r48000 -fS16_LE - | csdr convert_i16_f | csdr gain_ff 7000 | csdr convert_f_samplerf 20833 | sudo rpitx -i- -m RF -f ' + E1.get() + 'e3  >/dev/null 2>/dev/null &');
 def usbTX():
     global TXING;
     global soundcard;
     print("USB");
     if TXING != 1:
       TXING = 1;
-      os.system('arecord -c1 -r48000 -D ' + soundcard + ' -c1 -r48000 -D default -fS16_LE - -fS16_LE - |  csdr convert_i16_f | csdr dsb_fc | csdr bandpass_fir_fft_cc 0 0.1 0.01 | csdr gain_ff 2.0 | csdr shift_addition_cc 0.2 | sudo rpitx -i- -m IQFLOAT -f ' + E1.get() + 'e3  >/dev/null 2>/dev/null &');
+      os.system('arecord -c1 -r48000 -D ' + soundcard + ' -c1 -r48000 -fS16_LE - | csdr convert_i16_f | csdr dsb_fc | csdr bandpass_fir_fft_cc 0 0.1 0.01 | csdr gain_ff 2.0 | csdr shift_addition_cc 0.2 | sudo rpitx -i- -m IQFLOAT -f ' + E1.get() + 'e3  >/dev/null 2>/dev/null &');
 def lsbTX():
     global TXING;
     global soundcard;
     print("LSB");
     if TXING != 1:
       TXING = 1;
-    os.system('arecord -c1 -r48000 -D ' + soundcard + ' -c1 -r48000 -D default -fS16_LE - -fS16_LE - | csdr convert_i16_f | csdr dsb_fc | csdr bandpass_fir_fft_cc -0.1 0 0.01 | csdr gain_ff 2.0 | csdr shift_addition_cc 0.2 | sudo rpitx -i- -m IQFLOAT -f ' + E1.get() + 'e3  >/dev/null 2>/dev/null &');
+      os.system('arecord -c1 -r48000 -D ' + soundcard + ' -c1 -r48000 -fS16_LE - | csdr convert_i16_f | csdr dsb_fc | csdr bandpass_fir_fft_cc -0.1 0 0.01 | csdr gain_ff 2.0 | csdr shift_addition_cc 0.2 | sudo rpitx -i- -m IQFLOAT -f ' + E1.get() + 'e3  >/dev/null 2>/dev/null &');
 def wfmTX():
     global TXING;
     global soundcard;
     print("WFM");
     if TXING != 1:
       TXING = 1;
-      os.system('arecord -c1 -r48000 -D ' + soundcard + ' -c1 -r48000 -D default -fS16_LE - -fS16_LE - | csdr convert_i16_f | csdr gain_ff 70000 | csdr convert_f_samplerf 20833 | sudo rpitx -i- -m RF -f ' + E1.get() + 'e3  >/dev/null 2>/dev/null &');
+      os.system('arecord -c1 -r48000 -D ' + soundcard + ' -c1 -r48000 -fS16_LE - | csdr convert_i16_f | csdr gain_ff 70000 | csdr convert_f_samplerf 20833 | sudo rpitx -i- -m RF -f ' + E1.get() + 'e3  >/dev/null 2>/dev/null &');
 def vfoTX():
     global TXING;
     global soundcard;
