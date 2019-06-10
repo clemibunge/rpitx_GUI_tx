@@ -6,3 +6,7 @@ git clone https://github.com/clemibunge/rpitx_GUI_tx.git
 cd rpitx_GUI_tx
 ./install.sh
 ```
+reboot in order to use **rpitx** and **rpitx GUI** in a stable state!
+```sh
+sudo reboot
+```
