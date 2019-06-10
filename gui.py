@@ -33,6 +33,7 @@ def stopTX():
     print("STOP TX")
     TXING = 0;
     os.system('sudo killall rpitx 2>/dev/null');
+    os.system('sudo killall tune 2>/dev/null');
 def fmTX():
     global TXING;
     global soundcard;
