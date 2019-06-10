@@ -24,6 +24,7 @@ rightFrame.grid(row=0, column=1, padx=10, pady=3)
  
 E1 = Entry(rightFrame, width=20)
 E1.grid(row=0, column=0, padx=5, pady=3)
+E1.insert(0,'27.405');
 
 TXING = 0;
 
